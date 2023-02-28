@@ -17,28 +17,33 @@ The Laravel project together with its DB are deployed in docker, the necessary d
 docker-compose up
 ```
 
-2º Run to execute Migrations
+2º Check your CONTAINER_NAME_MYAPP.
 ```bash
-docker exec -it efrain-iseazy-myapp-1 php artisan migrate
+docker ps
 ```
 
-3º Run to execute Seeders
+3º Run to execute Migrations
 ```bash
-docker exec -it efrain-iseazy-myapp-1 php artisan db:seed
+docker exec -it CONTAINER_NAME_MYAPP php artisan migrate
+```
+
+4º Run to execute Seeders
+```bash
+docker exec -it CONTAINER_NAME_MYAPP php artisan db:seed
 ```
 
 ## Util
 
 Reset database
 ```bash
-docker exec -it efrain-iseazy-myapp-1 php artisan migrate:fresh --seed
+docker exec -it CONTAINER_NAME_MYAPP php artisan migrate:fresh --seed
 ```
 
 ## Start
 
 Start php laravel proyect (If it was stopped).
 ```bash
-docker exec -it efrain-iseazy-myapp-1 php artisan serve
+docker exec -it CONTAINER_NAME_MYAPP php artisan serve
 ```
 
 ## Docker containers
@@ -50,7 +55,7 @@ docker start efrain-iseazy-mariadb-1
 
 2º Access php laravel container.
 ```bash
-docker start efrain-iseazy-myapp-1
+docker start CONTAINER_NAME_MYAPP
 ```
 
 ## API testing with Postman
