@@ -50,7 +50,7 @@ docker exec -it CONTAINER_NAME_MYAPP php artisan serve
 
 1º Access mariadb container.
 ```bash
-docker start efrain-iseazy-mariadb-1
+docker start CONTAINER_NAME_MARIADB
 ```
 
 2º Access php laravel container.
