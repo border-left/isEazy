@@ -1,0 +1,32 @@
+version: '2'
+
+services:
+  mariadb:
+    hostname: mariadb
+    image: docker.io/bitnami/mariadb:10.6
+    environment:
+      MARIADB_USER: efrain_iseazy_user
+      MARIADB_DATABASE: efrain_iseazy_shop
+      MARIADB_PASSWORD: 50dd3671d75a468270660eDf6eDdf671
+      MARIADB_ROOT_PASSWORD: 412e357Ab357a41a75e01224f060aeac
+    ports:
+      - 3306:3306
+    volumes:
+      - efrain_iseazy_mariadb_volume:/var/lib/mysql
+  myapp:
+    hostname: php
+    image: docker.io/bitnami/laravel:10
+    ports:
+      - '8000:8000'
+    environment:
+      - DB_HOST=mariadb
+      - DB_PORT=3306
+      - DB_USERNAME=efrain_iseazy_user
+      - DB_DATABASE=efrain_iseazy_shop
+      - DB_PASSWORD=50dd3671d75a468270660eDf6eDdf671
+    volumes:
+      - './efrain-isEazy-shop:/app'
+    depends_on:
+      - mariadb
+volumes:
+  efrain_iseazy_mariadb_volume:
